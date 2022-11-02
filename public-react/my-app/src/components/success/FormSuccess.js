@@ -1,8 +1,8 @@
 import React from 'react'
 
-const FormSuccess = ({message}) => {
+const FormSuccess = ({message , newClass}) => {
    return (
-     <div className="form-success">
+     <div className={`form-success ${newClass}`}>
        <p>{message}</p>
      </div>
    );

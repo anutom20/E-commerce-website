@@ -14,19 +14,7 @@ const About = () => {
           </div>
           <div className="about-info">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ea
-              consequatur ipsum temporibus id obcaecati ipsa, sapiente quibusdam
-              maxime omnis ab deleniti explicabo perspiciatis labore dolorum
-              esse quo maiores nesciunt, molestiae asperiores neque architecto
-              pariatur! Nemo harum impedit molestias, reiciendis iure ab dolor
-              voluptates. Enim ipsa velit harum, in eligendi similique
-              voluptates soluta consectetur nobis ratione, quam rerum qui
-              quisquam vitae eum sit corporis omnis! Eligendi id dignissimos
-              fugiat commodi ab hic blanditiis velit inventore voluptates autem
-              consequuntur saepe amet magni aut, quia a eos impedit enim sint
-              sit reprehenderit. Temporibus provident, deleniti expedita
-              corrupti dolore est quasi explicabo commodi ducimus voluptatem
-              itaque quibusdam maxime officia autem ipsam quisquam. At.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, minus maxime eveniet corporis laboriosam architecto eum quasi. Itaque iste debitis autem facilis architecto in asperiores quos, ullam hic placeat impedit? Commodi ratione voluptatum temporibus laudantium expedita voluptates est, reprehenderit officia eveniet maiores explicabo, atque exercitationem aliquid corrupti. Blanditiis consequatur reiciendis maxime natus cupiditate temporibus ab, tempora officia impedit facere, eveniet esse quasi suscipit dolor perferendis laudantium magni at odio. Quae beatae id aliquam illum asperiores similique delectus quasi, quas obcaecati!
             </p>
           </div>
         </div>

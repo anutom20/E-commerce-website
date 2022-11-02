@@ -26,7 +26,8 @@ const addToCartOrCreateSingleProductOrder = async(req,res)=>{
             name,
             price,
             _id,
-            image,     
+            image,
+            color     
            } = product
            
            const addedToCart = await cartModel.create({
@@ -34,8 +35,10 @@ const addToCartOrCreateSingleProductOrder = async(req,res)=>{
                name:name,
                price:price,
                productId:_id,
-               quantity: 1,
-               total : price
+               subtotal : price*req.body.quantity,
+               color:color,
+               image:image,
+               ...req.body
                
        
            })
@@ -123,14 +126,11 @@ const showCart = async (req,res)=>{
      
     const user_id = req.user.userId
     const cartProducts = await cartModel.find({UserId: user_id})
-
-    if(cartProducts.length == 0){
-        return res.status(StatusCodes.OK).json({message:'Cart is empty!'})
-    }
+    
 
     let grandTotal  = 0
     cartProducts.forEach((product)=>{
-        grandTotal += product.total
+        grandTotal += product.subtotal
     })
     
      res.status(StatusCodes.OK).json({cart:cartProducts, grandTotal: grandTotal})
@@ -152,7 +152,7 @@ const updateProductQuantityInCart = async(req,res)=>{
     
     
     const newQuantity = req.body.quantity       
-    updateDetails = {total:product.price*newQuantity, quantity:newQuantity}
+    updateDetails = {subtotal:product.price*newQuantity, quantity:newQuantity}
     
     const productWithUpdatedQuantity = await cartModel.findOneAndUpdate({UserId:user_id, productId:productId},updateDetails,{new:true,runValidators:true})
 

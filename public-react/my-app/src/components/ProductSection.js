@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import SortFilter from "./filters/SortFilter";
 import PageNavigation from "./PageNavigation";
-import ZeroItems from "./ZeroItems";
 import ProductsError from "./error/ProductsError";
+import MessageOnly from "./MessageOnly";
 const ProductSection = () => {
   const { loading, products, totalProductCount, fetchError } = useGlobalContext();
   
@@ -22,7 +22,7 @@ const ProductSection = () => {
   }
 
   if (totalProductCount === 0) {
-    return <ZeroItems />;
+    return <MessageOnly message={'No items matched your search!'} />;
   }
 
   return (

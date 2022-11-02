@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import {BsCart} from 'react-icons/bs'
-import {HiUserPlus} from 'react-icons/hi2'
+import { BsCart } from "react-icons/bs";
+import { HiUserPlus } from "react-icons/hi2";
 import getCookie from "../cookies/getCookie";
 import { useGlobalContext } from "../context";
 import UserDropDown from "./UserDropDown";
 
-
 const Navbar = () => {
+  const { totalQuantity } = useGlobalContext();
+  let isLogged = false;
 
-  useGlobalContext()
-  
+  if (document.cookie.indexOf("username") > -1) isLogged = true;
+
   return (
     <nav className="nav-section">
       <div className="nav-center">
@@ -32,16 +33,17 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="cart-login-wrapper">
-          <Link to = '/viewcart' className="cart-btn" href="/">
+          <Link to="/viewcart" className="cart-btn" href="/">
             Cart
             <span className="cart-container">
               <BsCart />
-              <span className="cart-value">3</span>
+              <span className="cart-value">
+                {isLogged ? (totalQuantity ? totalQuantity : 0) : 0}
+              </span>
             </span>
           </Link>
-          { document.cookie.indexOf('username') > -1 ? (
-          
-            <UserDropDown name={getCookie('username')}/>
+          {document.cookie.indexOf("username") > -1 ? (
+            <UserDropDown name={getCookie("username")} />
           ) : (
             <Link to="/login" className="auth-btn">
               Login
@@ -50,12 +52,10 @@ const Navbar = () => {
               </span>
             </Link>
           )}
-          
         </div>
-        
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

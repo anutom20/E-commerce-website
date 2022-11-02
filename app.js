@@ -2,6 +2,7 @@ require('dotenv').config()
 require('express-async-errors')
 const cookieParser = require('cookie-parser')
 
+
 const cors = require('cors');
 const express = require('express')
 const app = express()
@@ -12,6 +13,8 @@ const mongoDBSession = require('connect-mongodb-session')(session)
 
 
 const port = process.env.PORT || 3001
+
+
 
 // route controllers
 const authRouter = require('./routes/auth')
@@ -33,7 +36,7 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-// enable all CORS requests
+// enable all CORS requests on the given origin
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
@@ -68,7 +71,9 @@ const setClientCookie = (req,res,next)=>{
   next()
 }
 
-app.use(setClientCookie)
+app.use(setClientCookie);
+
+
 
 
 app.get('/', (req, res) => {
@@ -81,6 +86,8 @@ app.get('/', (req, res) => {
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
+
+
 
 
 

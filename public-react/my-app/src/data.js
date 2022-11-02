@@ -26,6 +26,15 @@ const colors = [
   },
 ];
 
+const colorsHex = {
+  red: "#FF0000",
+  blue: "#0000FF",
+  cream: "#F6F0BC",
+  black: "#000000",
+  orange: "#FFA500",
+  brown: "#964B00",
+};
 
 
-module.exports = { brands, colors  };
+
+module.exports = { brands, colors , colorsHex };

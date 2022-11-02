@@ -10,12 +10,10 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
 import SingleProduct from "./pages/SingleProduct";
-import Error from "./components/error/Error";
+import MessageWithButton from "./components/error/MessageWithButton";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Cart from "./components/cart/Cart";
-
-
+import Cart from "./pages/cart/Cart"
 
 function App() {
   return (
@@ -27,12 +25,19 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<SingleProduct />} />
-        <Route path="*" element={<Error />} />
-        <Route path = '/login' element = {<Login/>} />
-        <Route path = '/register' element = {<Register/>} />
-        <Route path = '/viewcart' element = {<Cart/>} />
-        
-
+        <Route
+          path="*"
+          element={
+            <MessageWithButton
+              message={`Oops! , it's a dead end`}
+              buttonText={`Back to home`}
+              linkTo={"/"}
+            />
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/viewcart" element={<Cart />} />
       </Routes>
     </Router>
   );

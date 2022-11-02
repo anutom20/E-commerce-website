@@ -25,9 +25,9 @@ const Login = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   
   const url = UrlBuilder.createFromUrl(`${URL}/auth/login`)                                                                    
-  const {getUserInfo} = useGlobalContext()
+  const {getUserInfo, setName} = useGlobalContext()
   const handleClick = async (e)=>{
-    console.log('hi')
+    setName('shuttershuttershuttershutter123')
     e.preventDefault()
    try {
      const response = await axios({

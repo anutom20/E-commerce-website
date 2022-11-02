@@ -1,9 +1,9 @@
 import React from 'react'
-import deleteCookie from '../cookies/deleteCookie';
 import axios from 'axios';
 import URL from '../URL';
 import { Link  } from 'react-router-dom';
 import { useGlobalContext } from '../context';
+
 
 
 
@@ -19,8 +19,7 @@ const UserDropDown = ({name}) => {
     } catch(error){
       console.log(error)
     }
-    deleteCookie('username')
-    setName('random')
+    setName('randomrandomrandomrandom')
 
   }
     
