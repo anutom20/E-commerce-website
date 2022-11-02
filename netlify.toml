@@ -1,6 +1,0 @@
-
-
-[dev]
-  command = "npm start" # Command to start your dev server
-  targetPort = 3001 # The port for your application server, framework or site generator
-  envFiles = [".env"] # The env files to use, ordered by priority (left - highest, right - lowest)
