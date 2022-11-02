@@ -38,7 +38,7 @@ app.use(cookieParser())
 
 // enable all CORS requests on the given origin
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true}));
 
 
 
