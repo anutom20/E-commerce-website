@@ -77,7 +77,7 @@ app.use(
       maxAge: parseInt(process.env.MAX_AGE),
       sameSite: "none",
       secure: true,
-      domain: "anutom20-ecommerce.herokuapp",
+      
     },
     rolling: true,
   })
@@ -90,7 +90,6 @@ const setClientCookie = (req, res, next) => {
       httpOnly: false,
       secure: true,
       overwrite: true,
-      domain: "anutom20-ecommerce.herokuapp",
       sameSite: "none"
     });
   }
