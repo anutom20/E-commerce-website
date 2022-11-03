@@ -1,1 +1,1 @@
- export default URL = "https://anutom20-ecommerce.herokuapp.com/api/v1";
+ export default URL = process.env.REACT_APP_API_URL

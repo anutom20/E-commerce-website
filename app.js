@@ -55,8 +55,8 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "https://anutom20-ecommerce.herokuapp.com",
-      "http://localhost:5000",
+      process.env.REACT_APP_CLIENT_URL,
+      "http://localhost:3000",
     ],
   })
 );
@@ -76,8 +76,8 @@ app.use(
     proxy: true,
     cookie: {
       maxAge: parseInt(process.env.MAX_AGE),
-      sameSite: "none",
-      secure: true,
+      // sameSite: "none",
+      // secure: true,
     },
     rolling: true,
   })
@@ -88,9 +88,9 @@ const setClientCookie = (req, res, next) => {
     res.cookie("username", req.session.name, {
       maxAge: parseInt(process.env.MAX_AGE),
       httpOnly: false,
-      secure: true,
+      // secure: true,
       overwrite: true,
-      sameSite: "none",
+      // sameSite: "none",
     });
   }
   next();
