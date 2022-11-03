@@ -66,19 +66,18 @@ const store = new mongoDBSession({
   collection: "mySessions",
 });
 
-app.set('trust proxy', 1) // trust first proxy
+app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: false,
     store: store,
-    proxy:true,
+    proxy: true,
     cookie: {
       maxAge: parseInt(process.env.MAX_AGE),
       sameSite: "none",
       secure: true,
-      
     },
     rolling: true,
   })
@@ -91,15 +90,13 @@ const setClientCookie = (req, res, next) => {
       httpOnly: false,
       secure: true,
       overwrite: true,
-      sameSite: "none"
+      sameSite: "none",
     });
   }
   next();
 };
 
 app.use(setClientCookie);
-
-app.use(express.static(path.resolve(__dirname + "/client/build")));
 
 // app.get('/', (req, res) => {
 //   res.json({message : "Hello world"})
@@ -110,9 +107,13 @@ app.use(express.static(path.resolve(__dirname + "/client/build")));
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
-});
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.resolve(__dirname + "/client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
+  });
+}
 
 // app.get('/api/v1/test' , async (req, res) => {
 //   throw Error("access denied")
