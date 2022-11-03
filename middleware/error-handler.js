@@ -33,6 +33,7 @@ const errorHandlerMiddleware = (err,req,res,next)=>{
         statusCode = StatusCodes.BAD_REQUEST
         msg = 'Email already exists!'
     }
+    msg = err.message
     console.log(err)
     res.status(statusCode).json({error:msg});
 }
