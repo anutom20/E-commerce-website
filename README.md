@@ -1,2 +1,2 @@
 # E-commerce-website
-An E-commerce website API...
+An E-commerce website using MERN
