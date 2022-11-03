@@ -28,6 +28,9 @@
     "mongoose": "^6.6.2",
     "xss-clean": "^0.1.1"
   },
+  "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+
+
   "engines": {
     "node": "16.16.0"
   },
