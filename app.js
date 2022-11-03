@@ -66,13 +66,14 @@ const store = new mongoDBSession({
   collection: "mySessions",
 });
 
-// app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1) // trust first proxy
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: false,
     store: store,
+    proxy:true,
     cookie: {
       maxAge: parseInt(process.env.MAX_AGE),
       sameSite: "none",
