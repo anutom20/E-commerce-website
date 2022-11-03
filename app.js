@@ -54,7 +54,10 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://anutom20-ecommerce.herokuapp.com", "http://localhost:5000"],
+    origin: [
+      "https://anutom20-ecommerce.herokuapp.com",
+      "http://localhost:5000",
+    ],
   })
 );
 
@@ -70,7 +73,12 @@ app.use(
     resave: true,
     saveUninitialized: false,
     store: store,
-    cookie: { maxAge: parseInt(process.env.MAX_AGE) },
+    cookie: {
+      maxAge: parseInt(process.env.MAX_AGE),
+      sameSite: "none",
+      secure: true,
+      domain: "anutom20-ecommerce.herokuapp",
+    },
     rolling: true,
   })
 );
@@ -80,8 +88,10 @@ const setClientCookie = (req, res, next) => {
     res.cookie("username", req.session.name, {
       maxAge: parseInt(process.env.MAX_AGE),
       httpOnly: false,
-      secure: false,
+      secure: true,
       overwrite: true,
+      domain: "anutom20-ecommerce.herokuapp",
+      sameSite: "none"
     });
   }
   next();
