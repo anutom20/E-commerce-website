@@ -99,7 +99,7 @@ const setClientCookie = (req, res, next) => {
 
 app.use(setClientCookie);
 
-app.use(express.static(path.resolve(__dirname + "/client/build")));
+app.use(express.static(path.resolve(__dirname + "./client/build")));
 
 // app.get('/', (req, res) => {
 //   res.json({message : "Hello world"})
@@ -111,7 +111,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  res.sendFile(path.join(__dirname + "./client/build/index.html"));
 });
 
 // app.get('/api/v1/test' , async (req, res) => {
