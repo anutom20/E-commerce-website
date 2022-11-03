@@ -2,7 +2,7 @@ require('dotenv').config()
 require('express-async-errors')
 const cookieParser = require('cookie-parser')
 
-
+const path = require('path')
 const cors = require('cors');
 const express = require('express')
 const app = express()
@@ -13,23 +13,29 @@ const mongoDBSession = require('connect-mongodb-session')(session)
 // extra security packages
 const helmet = require('helmet')
 const xss = require('xss-clean')
-const rateLimiter = require('express-rate-limit')
+
 
 app.get("/ip", (req, res) => res.send(req.ip));
+
+app.use(express.json());
+
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(
-  rateLimiter({
-    windowMs: 60 * 1000, // 15 minutes
-    max: 60, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https: data:"],
+    
+    },
   })
 );
-app.use(express.json());
-app.use(helmet());
 app.use(xss());
 
 
 
 
-const port = process.env.PORT || 3001
+
+const port = process.env.PORT || 5000
 
 
 
@@ -46,6 +52,9 @@ const NotFoundMiddleware = require('./middleware/NotFoundMiddleware')
 
 
 
+
+
+
 // body parser
 
 app.use(express.json())
@@ -54,9 +63,9 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-// enable all CORS requests on the given origin
+// enable all CORS requests 
 
-app.use(cors({ credentials: true,  origin:"http://localhost:3000"}));
+app.use(cors({ credentials: true}));
 
 
 
@@ -92,11 +101,14 @@ const setClientCookie = (req,res,next)=>{
 app.use(setClientCookie);
 
 
+app.use(express.static(path.resolve(__dirname + '/client/build')));
+ 
 
 
-app.get('/', (req, res) => {
-  res.json({message : "Hello world"})
-})
+
+// app.get('/', (req, res) => {
+//   res.json({message : "Hello world"})
+// })
 
 
 // routes
@@ -104,6 +116,9 @@ app.get('/', (req, res) => {
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/products', productRouter)
 app.use('/api/v1/users', userRouter)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 
 
@@ -126,6 +141,9 @@ app.use(errorHandlerMiddleware)
 app.use(NotFoundMiddleware)
 
 
+
+
+
 const start = async()=>{
  try{
   await mongoose.connect(process.env.MONGO_URI, {
@@ -143,6 +161,7 @@ const start = async()=>{
  } 
 
 }
+
 
 start()
 

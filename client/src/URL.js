@@ -1,0 +1,1 @@
+ export default URL = "https://anutom20-ecommerce.herokuapp.com/api/v1";
