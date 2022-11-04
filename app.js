@@ -23,7 +23,11 @@ app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
-      "default-src": ["'self'", "https://anutom20-ecommerce.herokuapp.com"],
+      "default-src": [
+        "'self'",
+        "https://anutom20-ecommerce.herokuapp.com",
+        "https://anutom20-ecommerce.netlify.app",
+      ],
       "img-src": ["'self'", "https: data:"],
     },
   })
@@ -57,6 +61,7 @@ app.use(
     origin: [
       process.env.REACT_APP_CLIENT_URL,
       "http://localhost:3000",
+      "https://anutom20-ecommerce.netlify.app",
     ],
   })
 );
