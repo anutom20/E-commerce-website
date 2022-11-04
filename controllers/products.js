@@ -7,7 +7,7 @@ const getAllProducts = async(req,res)=>{
 
     
         
-        const {name,color,brand,numericFilters, sort, fields} = req.query
+        const {name,color,brand,price, sort, fields} = req.query
         const queryObject = {}
    
         if(name){
@@ -18,29 +18,8 @@ const getAllProducts = async(req,res)=>{
             queryObject.brand = {$regex:brand, $options:'i'}
         } 
    
-        if(numericFilters){
-           const operatorMap = {
-               '>':'$gt',
-               '>=':'$gte',
-               '=':'$eq',
-               '<':'$lt',
-               '<=':'$lte',
-           }
-           const regEx = /\b(>|>=|=|<|<=)\b/g
-           let filters = numericFilters.replace(
-               regEx,
-               (match)=> `-${operatorMap[match]}-`
-           )
-
-           let valObj = {}
-           filters = filters.split(',').forEach((item)=>{
-            const [field, operator, value] = item.split('-')
-            valObj[operator] = Number(value)
-            queryObject[field] = valObj 
-             
-           })
-            
-           
+        if(price){
+            queryObject.price = {$lte:price}    
         }
    
         let result = productModel.find(queryObject)
@@ -63,11 +42,8 @@ const getAllProducts = async(req,res)=>{
         const products = await result
         res.status(StatusCodes.OK).json({products,count : products.length})
          
-       
-    
-     
-    
-    
+        
+        
 
 }
 

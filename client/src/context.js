@@ -73,8 +73,8 @@ const AppProvider = ({ children }) => {
         allUrl.addQuery("color", color);
       }
 
-      url.addQuery("numericFilters=price<", price);
-      allUrl.addQuery("numericFilters=price<", price);
+      url.addQuery("price", price);
+      allUrl.addQuery("price", price);
 
       url.addQuery("sort", sort);
       allUrl.addQuery("sort", sort);
@@ -92,6 +92,8 @@ const AppProvider = ({ children }) => {
       setTotalProductCount(allData.count);
 
       url.toString();
+
+      console.log(url.toString())
 
       const res = await axios.get(url, { withCredentials: true });
       const data = res.data;
