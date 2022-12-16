@@ -25,7 +25,6 @@ app.use(
     directives: {
       "default-src": [
         "'self'",
-        "https://anutom20-ecommerce.herokuapp.com",
         "https://anutom20-ecommerce.netlify.app",
       ],
       "img-src": ["'self'", "https: data:"],
@@ -60,7 +59,6 @@ app.use(
     credentials: true,
     origin: [
       process.env.REACT_APP_CLIENT_URL,
-      "http://localhost:3000",
       "https://anutom20-ecommerce.netlify.app",
     ],
   })
@@ -81,8 +79,8 @@ app.use(
     proxy: true,
     cookie: {
       maxAge: parseInt(process.env.MAX_AGE),
-      sameSite: "none",
-      secure: true,
+      // sameSite: "none",
+      // secure: true,
     },
     rolling: true,
   })
@@ -93,9 +91,9 @@ const setClientCookie = (req, res, next) => {
     res.cookie("username", req.session.name, {
       maxAge: parseInt(process.env.MAX_AGE),
       httpOnly: false,
-      secure: true,
+      // secure: true,
       overwrite: true,
-      sameSite: "none",
+      // sameSite: "none",
     });
   }
   next();
@@ -113,12 +111,12 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.resolve(__dirname + "/client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
-  });
-}
+
+app.use(express.static(path.resolve(__dirname + "/client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
+});
+
 
 // app.get('/api/v1/test' , async (req, res) => {
 //   throw Error("access denied")

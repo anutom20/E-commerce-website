@@ -30,6 +30,8 @@ const AppProvider = ({ children }) => {
   const [pageNo, setPageNo] = useState(1);
   const [name, setName] = useState("");
 
+  
+
 
   const clearAllFilters = () => {
     setSearchTerm("");

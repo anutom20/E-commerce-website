@@ -306,6 +306,8 @@ a{
   grid-template-columns: 1fr 3fr;
 }
 
+
+
 .product-section {
   margin-top: 6rem;
   margin-bottom: 5rem;
@@ -315,6 +317,10 @@ a{
   grid-template-rows: 1fr auto auto;
     
 }
+
+
+
+
 
 .page-nav-container{
   display: grid;
@@ -417,6 +423,59 @@ a{
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+@media only screen and (max-width: 710px) {
+  
+
+  .home-component h1{
+    font-size: 3rem;
+  }
+
+  .home-component p{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  .home-img-container{
+    min-width: 10rem;
+  }
+
+  .home-img{
+    width: 15rem;
+    margin-left: -5rem;
+  }
+
+  
+}
+
+@media only screen and (max-width: 1142px) {
+  .product-list-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 888px) {
+  .product-list-container {
+    grid-template-columns: 1fr;
+    width:70%;
+  }
+    .page-nav-container {
+      margin-left: -5rem;
+    }
+  .home-component{
+    grid-template-columns: auto;
+  }
+  .about-container{
+    grid-template-columns: auto;
+    row-gap: 5rem;
+  }
+
+  
+}
+
+
+
+
+
 .product-sort-container{
   height:3rem;
   margin-left: 3rem;
@@ -431,7 +490,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--clr-grey-1);
 }
 
@@ -473,8 +532,62 @@ a{
   padding: 1rem;
   box-sizing: border-box;
   width: inherit;
+  min-width: 15rem; 
   
 }
+
+@media only screen and (max-width: 576px) {
+
+  .single-product-container{
+    width: 10rem;
+  }
+  .about-img{
+    height: 20rem;
+    width: 20rem;
+  }
+  .about-title{
+    font-size: 1.3rem;
+  }
+
+  .about-info{
+    font-size: 1rem;
+    line-height: 1.2rem;
+    
+  }
+}
+
+
+
+@media only screen and (max-width: 790px) {
+
+  .product-container{
+    grid-template-columns: auto;
+  }
+}
+
+
+
+@media only screen and (max-width: 888px) {
+  
+
+  .product-section{
+    margin-right: 2rem;
+  }
+
+  .product-list-container{
+    margin-right: 0;
+  }
+
+ 
+
+
+
+ 
+}
+
+
+
+
 
 
 .product-info{
@@ -498,7 +611,7 @@ a{
 .product-name{
   text-transform: capitalize;
   margin-left: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--clr-grey-2);
 }
 
@@ -507,6 +620,7 @@ a{
   justify-content: right;
   align-items: center;
   margin-right: 0.5rem;
+  font-size: 0.5;
   color:var(--clr-grey-5)
 }
 
@@ -774,6 +888,8 @@ hr.product-sort-line{
  border: 1px solid grey;
  
 }
+
+
 
 /* no items matched */
 
