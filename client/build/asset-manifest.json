@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.044f63f8.css",
-    "main.js": "/static/js/main.830f6e09.js",
+    "main.js": "/static/js/main.5761c3b1.js",
     "static/media/home_img.png": "/static/media/home_img.8ed246c7a00f9c480b72.png",
     "static/media/Guitar_by_Rones.png": "/static/media/Guitar_by_Rones.195688548835740c7dd1.png",
     "index.html": "/index.html",
     "main.044f63f8.css.map": "/static/css/main.044f63f8.css.map",
-    "main.830f6e09.js.map": "/static/js/main.830f6e09.js.map"
+    "main.5761c3b1.js.map": "/static/js/main.5761c3b1.js.map"
   },
   "entrypoints": [
     "static/css/main.044f63f8.css",
-    "static/js/main.830f6e09.js"
+    "static/js/main.5761c3b1.js"
   ]
 }
