@@ -139,7 +139,10 @@ const start = async () => {
       autoIndex: true,
     });
     app.listen(port, () => {
-      console.log(`Server listening on port ${port}`);
+      const FgBlue = "\x1b[34m";
+      const Bright = "\x1b[1m";
+      const Reset = "\x1b[0m";
+      console.log(FgBlue + Bright , `Sat Mar 2 | DEBUG | Server listening on port ${port}` ,Reset );
     });
   } catch (error) {
     console.log(error);
